@@ -3,908 +3,469 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akanksha Priya — Graphic Design Portfolio</title>
-    
+    <title>Akanksha Priya — Portfolio</title>
     <!-- Tailwind CSS & DaisyUI CDNs -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet">
-    
     <!-- Google Fonts: Instrument Serif & Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* ===== CORE STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background-color: #FFFFFF;
-            color: #000000;
-            overflow-x: hidden;
+            background-color: #F2EAE0;
+            color: #1A1A1A;
         }
-        
         .font-serif {
             font-family: 'Instrument Serif', serif;
         }
-        
-        /* ===== CUSTOM SCROLLBAR ===== */
         ::-webkit-scrollbar {
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #FFFFFF;
+            background: #F2EAE0;
         }
         ::-webkit-scrollbar-thumb {
-            background: #000000;
+            background: #9B8EC7;
         }
         
-        /* ===== SELECTION COLOR ===== */
-        ::selection {
-            background: #000000;
-            color: #FFFFFF;
-        }
+        /* Custom Palette Injections */
+        .bg-cream { background-color: #F2EAE0; }
+        .bg-sage { background-color: #B4D3D9; }
+        .bg-orchid { background-color: #BDA6CE; }
+        .bg-lavender { background-color: #9B8EC7; }
         
-        /* ===== NAVIGATION ===== */
-        .nav-sticky {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+        .text-lavender { color: #9B8EC7; }
+        .text-dark { color: #1A1A1A; }
         
-        .nav-sticky.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #000000;
-            transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        /* ===== PROJECT CARDS ===== */
-        .project-card {
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-        }
-        
-        .project-card:hover {
-            transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .project-card-dark:hover {
-            transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
-        }
-        
-        /* ===== BUTTON HOVER EFFECTS ===== */
-        .btn-primary {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: left 0.4s ease;
-        }
-        
-        .btn-primary:hover::before {
-            left: 0;
-        }
-        
-        /* ===== CV MODAL FIXED ===== */
-        #custom_cv_modal {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            animation: modalFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        
-        #custom_cv_modal.active {
-            display: flex;
-        }
-        
-        @keyframes modalFadeIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.9) translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-        
-        .modal-content {
-            background: #FFFFFF;
-            width: 100%;
-            max-width: 820px;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            border-radius: 0;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-            animation: modalContentIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            overflow: hidden;
-        }
-        
-        @keyframes modalContentIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.95) translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-        
-        .modal-header {
-            background: #000000;
-            color: #FFFFFF;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #000000;
-            flex-shrink: 0;
-        }
-        
-        .modal-body {
-            padding: 24px 28px;
-            overflow-y: auto;
-            flex: 1;
-        }
-        
-        .modal-body::-webkit-scrollbar {
-            width: 4px;
-        }
-        
-        .modal-body::-webkit-scrollbar-track {
-            background: #f0f0f0;
-        }
-        
-        .modal-body::-webkit-scrollbar-thumb {
-            background: #000000;
-        }
-        
-        .modal-footer {
-            border-top: 1px solid #e5e5e5;
-            padding: 14px 24px;
-            background: #fafafa;
-            display: flex;
-            justify-content: flex-end;
-            flex-shrink: 0;
-        }
-        
-        .modal-close-btn {
-            background: transparent;
-            border: none;
-            color: #FFFFFF;
-            font-size: 22px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 4px 8px;
-            line-height: 1;
-        }
-        
-        .modal-close-btn:hover {
-            transform: rotate(90deg);
-            color: #aaaaaa;
-        }
-        
-        /* ===== LOOKBOOK MODAL ===== */
-        #lookbook_modal {
-            position: fixed;
-            inset: 0;
-            z-index: 9998;
-            background: #000000;
-            display: none;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-        
-        #lookbook_modal.active {
-            display: block;
-        }
-        
-        .lookbook-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
-            z-index: 50;
-        }
-        
-        .lookbook-close {
-            background: #FFFFFF;
-            color: #000000;
-            border: 1px solid #FFFFFF;
-            padding: 8px 20px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .lookbook-close:hover {
-            background: #000000;
-            color: #FFFFFF;
-        }
-        
-        .lookbook-image-wrapper {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 80px 16px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-        }
-        
-        .lookbook-image-item {
-            width: 100%;
-            background: #0a0a0a;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s ease;
-        }
-        
-        .lookbook-image-item:hover {
-            transform: scale(1.01);
-        }
-        
-        .lookbook-image-item img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            max-height: 85vh;
-            background: #0a0a0a;
-            display: block;
-        }
-        
-        .lookbook-image-label {
-            display: block;
-            font-size: 9px;
-            color: #555;
-            font-family: 'Space Grotesk', monospace;
-            padding: 6px 4px 0;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-        
-        /* ===== RESPONSIVE FIXES ===== */
-        @media (max-width: 640px) {
-            .modal-body {
-                padding: 16px 18px;
-            }
-            
-            .modal-header {
-                padding: 12px 16px;
-            }
-            
-            .modal-header span {
-                font-size: 10px;
-            }
-            
-            .modal-footer {
-                padding: 10px 16px;
-            }
-            
-            .lookbook-header {
-                padding: 12px 16px;
-            }
-            
-            .lookbook-header .lookbook-title {
-                font-size: 9px;
-            }
-            
-            .lookbook-close {
-                padding: 6px 14px;
-                font-size: 10px;
-            }
-            
-            .lookbook-image-wrapper {
-                padding: 70px 8px 20px;
-                gap: 16px;
-            }
-            
-            .lookbook-image-item {
-                padding: 6px;
-            }
-            
-            #custom_cv_modal {
-                padding: 8px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .modal-body {
-                padding: 12px 14px;
-                font-size: 12px;
-            }
-            
-            .modal-body table {
-                font-size: 10px;
-            }
-            
-            .modal-body table th,
-            .modal-body table td {
-                padding: 6px 4px !important;
-            }
-            
-            .modal-header span {
-                font-size: 8px;
-                letter-spacing: 0.05em;
-            }
-            
-            .modal-close-btn {
-                font-size: 18px;
-            }
-            
-            .lookbook-image-wrapper {
-                padding: 60px 4px 16px;
-                gap: 12px;
-            }
-            
-            .lookbook-image-item {
-                padding: 4px;
-            }
-            
-            .lookbook-header .lookbook-title {
-                font-size: 8px;
-            }
-            
-            .lookbook-close {
-                padding: 4px 10px;
-                font-size: 8px;
-            }
-        }
-        
-        /* ===== ANIMATION UTILITIES ===== */
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-        
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        .stagger-children > * {
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-        }
-        
-        .stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
-        .stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
-        .stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
-        .stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
-        .stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
-        .stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
-        
-        /* ===== SCROLL PROGRESS ===== */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: #000000;
-            z-index: 9997;
-            transition: width 0.1s linear;
-        }
+        .border-lavender { border-color: #9B8EC7; }
+        .border-orchid { border-color: #BDA6CE; }
+        .border-dark { border-color: #1A1A1A; }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden selection:bg-black selection:text-white">
 
-    <!-- ===== SCROLL PROGRESS INDICATOR ===== -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- ===== NAVIGATION BAR ===== -->
-    <nav id="mainNav" class="nav-sticky sticky top-0 z-40 w-full bg-white bg-opacity-90 backdrop-blur-md border-b border-black px-4 sm:px-6 py-3 sm:py-4 flex flex-wrap items-center justify-between gap-3">
-        <a href="#" class="text-lg sm:text-xl font-bold tracking-tight uppercase">AKANKSHA PRIYA</a>
-        
-        <div class="flex flex-wrap items-center justify-end gap-2 sm:gap-4 text-[10px] sm:text-sm font-medium tracking-wide">
-            <a href="#about" class="nav-link hidden sm:inline">ABOUT</a>
-            <a href="#work" class="nav-link hidden sm:inline">WORK</a>
-            <a href="#experience" class="nav-link hidden sm:inline">EXPERIENCE</a>
-            <a href="#recognition" class="nav-link hidden sm:inline">HONORS</a>
-            
-            <!-- Mobile Menu Toggle -->
-            <button id="mobileMenuToggle" class="sm:hidden text-black text-xl font-bold" aria-label="Toggle Menu">
-                ☰
-            </button>
-            
-            <!-- CV Button -->
-            <button onclick="toggleCVModal(true)" class="border border-black px-3 sm:px-4 py-1.5 hover:bg-black hover:text-white transition-all duration-300 font-bold text-[10px] sm:text-xs">
-                CV
-            </button>
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-40 w-full bg-opacity-90 backdrop-blur-md border-b border-dark px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4 transition-all duration-300" style="background-color: #F2EAE0;">
+        <a href="#" class="text-xl font-bold tracking-tight uppercase text-dark">AKANKSHA PRIYA</a>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-medium tracking-wide">
+            <a href="#about" class="hover:underline underline-offset-4 text-dark">ABOUT</a>
+            <a href="#work" class="hover:underline underline-offset-4 text-dark">WORK</a>
+            <a href="#experience" class="hover:underline underline-offset-4 text-dark">EXPERIENCE</a>
+            <a href="#recognition" class="hover:underline underline-offset-4 text-dark">HONORS</a>
+            <button onclick="toggleCVModal(true)" class="border border-dark px-4 py-1.5 hover:bg-black hover:text-white transition-all duration-300 font-bold bg-sage text-dark">CV</button>
         </div>
     </nav>
 
-    <!-- ===== MOBILE MENU ===== -->
-    <div id="mobileMenu" class="fixed inset-0 z-30 bg-black bg-opacity-95 backdrop-blur-sm hidden flex-col items-center justify-center gap-8 text-white text-xl font-light">
-        <button id="mobileMenuClose" class="absolute top-6 right-6 text-white text-3xl">✕</button>
-        <a href="#about" class="mobile-nav-link hover:underline underline-offset-4">ABOUT</a>
-        <a href="#work" class="mobile-nav-link hover:underline underline-offset-4">WORK</a>
-        <a href="#experience" class="mobile-nav-link hover:underline underline-offset-4">EXPERIENCE</a>
-        <a href="#recognition" class="mobile-nav-link hover:underline underline-offset-4">HONORS</a>
-        <button onclick="toggleCVModal(true); document.getElementById('mobileMenu').classList.add('hidden');" class="border border-white px-6 py-2 hover:bg-white hover:text-black transition-all duration-300 font-bold">
-            OPEN CV
-        </button>
-    </div>
-
-    <!-- ===== HERO SECTION ===== -->
-    <section id="about" class="min-h-screen flex flex-col justify-between px-4 sm:px-6 md:px-16 lg:px-24 py-12 md:py-20">
-        <div class="pt-8 sm:pt-12 max-w-5xl" data-aos="fade-up" data-aos-duration="1000">
-            <span class="text-[10px] uppercase tracking-widest block mb-4 font-semibold">[ VISUAL DESIGN & MULTIMEDIA ]</span>
-            <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light leading-none tracking-tight mb-6 sm:mb-8">
+    <!-- HERO SECTION -->
+    <section id="about" class="min-h-screen flex flex-col justify-between px-6 py-12 md:px-16 md:py-20 lg:px-24">
+        <div class="pt-12 max-w-5xl" data-aos="fade-up" data-aos-duration="1000">
+            <span class="text-xs uppercase tracking-widest block mb-4 font-semibold text-lavender">[ VISUAL DESIGN & MULTIMEDIA ]</span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-none tracking-tight mb-8 text-dark">
                 I specialize in <i>visual design</i>, producing narratives that bridge the gap between <i>concept & craft</i>.
             </h1>
-            <p class="text-base sm:text-lg md:text-xl font-light max-w-3xl leading-relaxed mt-4 sm:mt-6">
-                Rooted in research-led visual design translating briefs, social causes, and complex academic data sets into sharp, considered layouts across print, digital formats, and media publications.
+            <p class="text-lg md:text-xl font-light max-w-3xl leading-relaxed mt-6 text-dark/80">
+                Rooted in research-led visual design—translating briefs, social causes, and complex academic data sets into sharp, considered layouts across print, digital formats, and media publications.
             </p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-12 sm:pt-16 border-t border-black mt-8 sm:mt-12 w-full text-[10px] sm:text-xs tracking-wider">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 border-t border-dark mt-12 w-full text-xs tracking-wider">
             <div>
-                <span class="text-gray-500 block mb-1">CORE TOOLS</span>
-                <span class="font-medium uppercase">Photoshop / Canva</span>
+                <span class="text-gray-600 block mb-1">CORE TOOLS</span>
+                <span class="font-medium uppercase text-dark">Photoshop / Illustrator / Canva</span>
             </div>
             <div>
-                <span class="text-gray-500 block mb-1">PRODUCTION</span>
-                <span class="font-medium uppercase">Layout / Editorial</span>
+                <span class="text-gray-600 block mb-1">PRODUCTION STACK</span>
+                <span class="font-medium uppercase text-dark">Layout / Editorial / Videography</span>
             </div>
             <div>
-                <span class="text-gray-500 block mb-1">STRATEGY</span>
-                <span class="font-medium uppercase">Brief to Final Workflow</span>
+                <span class="text-gray-600 block mb-1">STRATEGY</span>
+                <span class="font-medium uppercase text-dark">Brief to Final Files Workflow</span>
             </div>
             <div>
-                <span class="text-gray-500 block mb-1">METRICS</span>
-                <span class="font-medium uppercase">DU IPCW / 8.59 CGPA</span>
+                <span class="text-gray-600 block mb-1">METRICS</span>
+                <span class="font-medium uppercase text-dark">DU IPCW / 8.59 CGPA</span>
             </div>
         </div>
     </section>
 
-    <!-- ===== SELECTED WORKS ===== -->
-    <section id="work" class="bg-black text-white px-4 sm:px-6 md:px-16 lg:px-24 py-16 sm:py-20">
+    <!-- SELECTED WORKS ARCHITECTURE -->
+    <section id="work" class="bg-dark text-white px-6 py-20 md:px-16 lg:px-24" style="background-color: #1A1A1A;">
         <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-end border-b border-white pb-4 sm:pb-6 mb-12 sm:mb-16">
+            <div class="flex justify-between items-end border-b border-white/20 pb-6 mb-16">
                 <div>
-                    <span class="text-[10px] uppercase tracking-widest block mb-2 text-gray-400">[ DIGITAL PORTFOLIO ]</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif">Selected Works</h2>
+                    <span class="text-xs uppercase tracking-widest block mb-2 text-sage">[ DIGITAL PORTFOLIO LOOKBOOKS ]</span>
+                    <h2 class="text-4xl md:text-5xl font-serif">Selected Case Studies & Works</h2>
                 </div>
             </div>
 
-            <!-- Case Studies -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-16 sm:mb-20">
+            <!-- PRIMARY IN-DEPTH CASE STUDIES -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
                 <!-- Case Study 1 -->
-                <div class="group cursor-pointer border border-white p-4 sm:p-6 hover:bg-white hover:text-black transition-all duration-500 flex flex-col justify-between project-card-dark" 
+                <div class="group cursor-pointer border border-white/20 p-6 hover:bg-cream hover:text-black transition-all duration-500 flex flex-col justify-between" 
                      onclick="openLookbook('Shiv_Naresh_Case_Study', 10)" data-aos="fade-right">
                     <div>
-                        <div class="w-full aspect-[4/3] bg-neutral-900 border border-white/20 mb-4 sm:mb-6 overflow-hidden">
-                            <img src="assets/Shiv_Naresh_Case_Study/page_001.webp" alt="Shiv Naresh Case Study" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        <div class="w-full aspect-[4/3] bg-neutral-900 border border-white/10 mb-6 overflow-hidden">
+                            <img src="assets/Shiv_Naresh_Case_Study/page_001.webp" alt="Shiv Naresh Case Study" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         </div>
-                        <h3 class="text-2xl sm:text-3xl font-serif tracking-tight mb-2">Shiv Naresh Brand Repositioning</h3>
-                        <p class="text-xs sm:text-sm font-light text-gray-400 group-hover:text-black mb-4 sm:mb-6">
-                            SWOT-led identity research and refreshed presentation decks for a legacy sports brand strategy.
+                        <h3 class="text-3xl font-serif tracking-tight mb-2 group-hover:text-dark">Shiv Naresh Brand Repositioning</h3>
+                        <p class="text-sm font-light text-gray-400 group-hover:text-dark/80 mb-6">
+                            SWOT-led identity research and refreshed presentation presentation decks built out for a legacy sports brand strategy blueprint.
                         </p>
                     </div>
-                    <span class="text-[10px] sm:text-xs font-bold tracking-widest group-hover:underline">[ VIEW 10 PAGES → ]</span>
+                    <span class="text-xs font-bold tracking-widest text-sage group-hover:text-lavender group-hover:underline">[ VIEW ENTIRE WORK (10 PAGES) → ]</span>
                 </div>
 
                 <!-- Case Study 2 -->
-                <div class="group cursor-pointer border border-white p-4 sm:p-6 hover:bg-white hover:text-black transition-all duration-500 flex flex-col justify-between project-card-dark" 
+                <div class="group cursor-pointer border border-white/20 p-6 hover:bg-cream hover:text-black transition-all duration-500 flex flex-col justify-between" 
                      onclick="openLookbook('Yonex_PR_Crisis_Case_Study', 8)" data-aos="fade-left">
                     <div>
-                        <div class="w-full aspect-[4/3] bg-neutral-900 border border-white/20 mb-4 sm:mb-6 overflow-hidden">
-                            <img src="assets/Yonex_PR_Crisis_Case_Study/page_001.webp" alt="Yonex PR Crisis Study" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        <div class="w-full aspect-[4/3] bg-neutral-900 border border-white/10 mb-6 overflow-hidden">
+                            <img src="assets/Yonex_PR_Crisis_Case_Study/page_001.webp" alt="Yonex PR Crisis Study" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         </div>
-                        <h3 class="text-2xl sm:text-3xl font-serif tracking-tight mb-2">Yonex PR Crisis Case Study</h3>
-                        <p class="text-xs sm:text-sm font-light text-gray-400 group-hover:text-black mb-4 sm:mb-6">
-                            Academic PR crisis assessment transformed into a polished portfolio-ready presentation.
+                        <h3 class="text-3xl font-serif tracking-tight mb-2 group-hover:text-dark">Yonex Sunrise India Open PR Case Study</h3>
+                        <p class="text-sm font-light text-gray-400 group-hover:text-dark/80 mb-6">
+                            Academic public relations crisis assessment transformed into a polished, portfolio-ready presentation layout framework.
                         </p>
                     </div>
-                    <span class="text-[10px] sm:text-xs font-bold tracking-widest group-hover:underline">[ VIEW 8 PAGES → ]</span>
+                    <span class="text-xs font-bold tracking-widest text-sage group-hover:text-lavender group-hover:underline">[ VIEW ENTIRE WORK (8 PAGES) → ]</span>
                 </div>
             </div>
 
-            <!-- Project Grid -->
-            <div class="border-t border-white/20 pt-8 sm:pt-12">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <!-- CORE PROJECTS GRID -->
+            <div class="border-t border-white/20 pt-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Card Design -->
-                    <div class="border border-white/30 p-3 sm:p-4 hover:border-white transition-all cursor-pointer group flex flex-col justify-between project-card-dark" 
-                         onclick="openLookbook('Card Design', 3)" data-aos="zoom-in">
+                    <div class="border border-white/10 p-4 hover:bg-orchid hover:text-black transition-all cursor-pointer group flex flex-col justify-between" onclick="openLookbook('Card Design', 3)">
                         <div>
-                            <div class="aspect-square bg-neutral-950 mb-3 sm:mb-4 overflow-hidden">
-                                <img src="assets/Card Design/page_001.webp" alt="Card Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                            <div class="aspect-square bg-neutral-950 mb-4 overflow-hidden">
+                                <img src="assets/Card Design/page_001.webp" alt="Card Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
-                            <h4 class="text-lg sm:text-xl font-serif mb-1">Card Layout Design</h4>
-                            <p class="text-[10px] sm:text-xs text-gray-400 mb-3 sm:mb-4">Clean asset layouts balancing text and visual space.</p>
+                            <h4 class="text-xl font-serif mb-1 group-hover:text-dark">Card Layout Design</h4>
+                            <p class="text-xs text-gray-400 group-hover:text-dark/80 mb-4">Structured, clean asset layouts balancing text metrics and visual communication space rules.</p>
                         </div>
-                        <span class="text-[10px] group-hover:underline text-gray-300 font-medium">[ 3 PAGES ]</span>
+                        <span class="text-xs text-sage group-hover:text-dark font-medium">[ VIEW 3 PAGES ]</span>
                     </div>
 
                     <!-- Guide Book -->
-                    <div class="border border-white/30 p-3 sm:p-4 hover:border-white transition-all cursor-pointer group flex flex-col justify-between project-card-dark" 
-                         onclick="openLookbook('Guide Book', 16)" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="border border-white/10 p-4 hover:bg-sage hover:text-black transition-all cursor-pointer group flex flex-col justify-between" onclick="openLookbook('Guide Book', 16)">
                         <div>
-                            <div class="aspect-square bg-neutral-950 mb-3 sm:mb-4 overflow-hidden">
-                                <img src="assets/Guide Book/page_001.webp" alt="Guide Book" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                            <div class="aspect-square bg-neutral-950 mb-4 overflow-hidden">
+                                <img src="assets/Guide Book/page_001.webp" alt="Guide Book" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
-                            <h4 class="text-lg sm:text-xl font-serif mb-1">NDNS Guidebook</h4>
-                            <p class="text-[10px] sm:text-xs text-gray-400 mb-3 sm:mb-4">Environmental research into print-ready publication.</p>
+                            <h4 class="text-xl font-serif mb-1 group-hover:text-dark">NDNS Guidebook</h4>
+                            <p class="text-xs text-gray-400 group-hover:text-dark/80 mb-4">Turning raw environmental research and field notes into a highly readable, print-ready publication.</p>
                         </div>
-                        <span class="text-[10px] group-hover:underline text-gray-300 font-medium">[ 16 PAGES ]</span>
+                        <span class="text-xs text-orchid group-hover:text-dark font-medium">[ VIEW 16 PAGES ]</span>
                     </div>
 
                     <!-- Newsletter -->
-                    <div class="border border-white/30 p-3 sm:p-4 hover:border-white transition-all cursor-pointer group flex flex-col justify-between project-card-dark" 
-                         onclick="openLookbook('Newsletter', 27)" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="border border-white/10 p-4 hover:bg-orchid hover:text-black transition-all cursor-pointer group flex flex-col justify-between" onclick="openLookbook('Newsletter', 27)">
                         <div>
-                            <div class="aspect-square bg-neutral-950 mb-3 sm:mb-4 overflow-hidden">
-                                <img src="assets/Newsletter/page_001.webp" alt="Newsletter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                            <div class="aspect-square bg-neutral-950 mb-4 overflow-hidden">
+                                <img src="assets/Newsletter/page_001.webp" alt="Newsletter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
-                            <h4 class="text-lg sm:text-xl font-serif mb-1">NDNS Newsletter</h4>
-                            <p class="text-[10px] sm:text-xs text-gray-400 mb-3 sm:mb-4">Serial editorial grid for public outreach programs.</p>
+                            <h4 class="text-xl font-serif mb-1 group-hover:text-dark">NDNS Newsletter Layouts</h4>
+                            <p class="text-xs text-gray-400 group-hover:text-dark/80 mb-4">Meticulous serial editorial grid design engineered for recurring public outreach programs.</p>
                         </div>
-                        <span class="text-[10px] group-hover:underline text-gray-300 font-medium">[ 27 PAGES ]</span>
+                        <span class="text-xs text-sage group-hover:text-dark font-medium">[ VIEW 27 PAGES ]</span>
                     </div>
 
                     <!-- Posters -->
-                    <div class="border border-white/30 p-3 sm:p-4 hover:border-white transition-all cursor-pointer group flex flex-col justify-between project-card-dark" 
-                         onclick="openLookbook('Posters', 2)" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="border border-white/10 p-4 hover:bg-sage hover:text-black transition-all cursor-pointer group flex flex-col justify-between" onclick="openLookbook('Posters', 2)">
                         <div>
-                            <div class="aspect-square bg-neutral-950 mb-3 sm:mb-4 overflow-hidden">
-                                <img src="assets/Posters/page_001.webp" alt="Posters" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                            <div class="aspect-square bg-neutral-950 mb-4 overflow-hidden">
+                                <img src="assets/Posters/page_001.webp" alt="Posters" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
-                            <h4 class="text-lg sm:text-xl font-serif mb-1">Posters & Campaign</h4>
-                            <p class="text-[10px] sm:text-xs text-gray-400 mb-3 sm:mb-4">Development campaign graphics and PSA awareness kits.</p>
+                            <h4 class="text-xl font-serif mb-1 group-hover:text-dark">Stray Dog Welfare & Posters</h4>
+                            <p class="text-xs text-gray-400 group-hover:text-dark/80 mb-4">Development campaign graphics, visual toolkits, and structured PSA awareness flyers.</p>
                         </div>
-                        <span class="text-[10px] group-hover:underline text-gray-300 font-medium">[ 2 PAGES ]</span>
+                        <span class="text-xs text-orchid group-hover:text-dark font-medium">[ VIEW 2 PAGES ]</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== EXPERIENCE TIMELINE ===== -->
-    <section id="experience" class="px-4 sm:px-6 md:px-16 lg:px-24 py-16 sm:py-20 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
+    <!-- PROFESSIONAL INTERNSHIPS TIMELINE -->
+    <section id="experience" class="px-6 py-20 md:px-16 lg:px-24 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div>
-                <span class="text-[10px] uppercase tracking-widest block mb-2 text-gray-500">[ PROFESSIONAL LOGS ]</span>
-                <h2 class="text-3xl sm:text-4xl font-serif tracking-tight">Experience</h2>
+                <span class="text-xs uppercase tracking-widest block mb-2 text-lavender font-semibold">[ REAL-WORLD ENGAGEMENTS ]</span>
+                <h2 class="text-4xl font-serif tracking-tight text-dark">Professional Logs</h2>
             </div>
-            <div class="lg:col-span-2 space-y-8 sm:space-y-10">
-                <!-- Experience Items -->
-                <div class="border-b border-black pb-6" data-aos="fade-up">
+            <div class="lg:col-span-2 space-y-10">
+                <!-- CPDHE -->
+                <div class="border-b border-dark pb-6" data-aos="fade-up">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">CPDHE, University of Delhi</h3>
-                        <span class="text-[10px] bg-black text-white px-2 py-0.5 mt-1 sm:mt-0 font-mono whitespace-nowrap">NOV 2025 — MAY 2026</span>
+                        <h3 class="text-xl font-bold tracking-tight text-dark">CPDHE, University of Delhi</h3>
+                        <span class="text-xs text-dark px-2 py-0.5 mt-1 sm:mt-0 font-mono bg-sage">NOV 2025 — MAY 2026</span>
                     </div>
-                    <p class="text-xs sm:text-sm text-gray-600 font-light">Managed backend operations for online programmes, coordinated participant communication, and maintained core databases.</p>
+                    <p class="text-sm text-gray-700 font-light">Managed backend operations for online programmes, coordinated participant communication updates, and maintained core databases.</p>
                 </div>
 
-                <div class="border-b border-black pb-6" data-aos="fade-up">
+                <!-- Budding Mariner -->
+                <div class="border-b border-dark pb-6" data-aos="fade-up">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">Budding Mariner</h3>
-                        <span class="text-[10px] bg-black text-white px-2 py-0.5 mt-1 sm:mt-0 font-mono whitespace-nowrap">JULY — NOV 2025</span>
+                        <h3 class="text-xl font-bold tracking-tight text-dark">Budding Mariner</h3>
+                        <span class="text-xs text-dark px-2 py-0.5 mt-1 sm:mt-0 font-mono bg-orchid">JULY — NOV 2025</span>
                     </div>
-                    <p class="text-xs sm:text-sm text-gray-600 font-light">Designed 100+ visual learning assets and educational layouts from dense academic data.</p>
+                    <p class="text-sm text-gray-700 font-light">Designed more than 100 visual learning assets and high-end educational layouts from dense, raw academic data vectors.</p>
                 </div>
 
-                <div class="border-b border-black pb-6" data-aos="fade-up">
+                <!-- A.P. Khanna Textiles -->
+                <div class="border-b border-dark pb-6" data-aos="fade-up">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">A. P. Khanna Textiles</h3>
-                        <span class="text-[10px] bg-black text-white px-2 py-0.5 mt-1 sm:mt-0 font-mono whitespace-nowrap">JULY 2025</span>
+                        <h3 class="text-xl font-bold tracking-tight text-dark">A. P. Khanna Textiles Pvt. Ltd</h3>
+                        <span class="text-xs text-dark px-2 py-0.5 mt-1 sm:mt-0 font-mono bg-sage">JULY 2025</span>
                     </div>
-                    <p class="text-xs sm:text-sm text-gray-600 font-light">Assisted with corporate site interface layouts, developed brand video content, and managed digital storytelling tracks.</p>
+                    <p class="text-sm text-gray-700 font-light">Assisted directly in corporate site interface layouts, developed brand video content streams, and managed creative digital storytelling tracks.</p>
                 </div>
 
-                <div class="border-b border-black pb-6" data-aos="fade-up">
+                <!-- NDNS -->
+                <div class="border-b border-dark pb-6" data-aos="fade-up">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">NDNS (New Delhi Nature Society)</h3>
-                        <span class="text-[10px] bg-black text-white px-2 py-0.5 mt-1 sm:mt-0 font-mono whitespace-nowrap">JUNE — JULY 2025</span>
+                        <h3 class="text-xl font-bold tracking-tight text-dark">NDNS (New Delhi Nature Society)</h3>
+                        <span class="text-xs text-dark px-2 py-0.5 mt-1 sm:mt-0 font-mono bg-orchid">JUNE — JULY 2025</span>
                     </div>
-                    <p class="text-xs sm:text-sm text-gray-600 font-light">Produced digital layouts, conservation campaign flyers, podcast structures, and field documentary assets.</p>
+                    <p class="text-sm text-gray-700 font-light">Produced short-form digital layouts, environmental conservation campaign flyers, podcast structures, and on-ground field documentary assets.</p>
                 </div>
 
-                <div class="border-b border-black pb-6" data-aos="fade-up">
+                <!-- Samarth Bharat Project -->
+                <div class="border-b border-dark pb-6" data-aos="fade-up">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">Samarth Bharat Project</h3>
-                        <span class="text-[10px] bg-black text-white px-2 py-0.5 mt-1 sm:mt-0 font-mono whitespace-nowrap">FEB — MARCH 2024</span>
+                        <h3 class="text-xl font-bold tracking-tight text-dark">Samarth Bharat Project</h3>
+                        <span class="text-xs text-dark px-2 py-0.5 mt-1 sm:mt-0 font-mono bg-sage">FEB — MARCH 2024</span>
                     </div>
-                    <p class="text-xs sm:text-sm text-gray-600 font-light">Documentary storytelling photography for official organizational annual reports.</p>
+                    <p class="text-sm text-gray-700 font-light">Captured professional documentary storytelling photography serving as focal visual layouts for official organizational annual reports.</p>
                 </div>
 
-                <div data-aos="fade-up">
+                <!-- Unnat Bharat Abhiyan -->
+                <div class="border-b border-dark pb-6" data-aos="fade-up">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">Unnat Bharat Abhiyan</h3>
-                        <span class="text-[10px] bg-black text-white px-2 py-0.5 mt-1 sm:mt-0 font-mono whitespace-nowrap">2023 — 2024</span>
+                        <h3 class="text-xl font-bold tracking-tight text-dark">Unnat Bharat Abhiyan</h3>
+                        <span class="text-xs text-dark px-2 py-0.5 mt-1 sm:mt-0 font-mono bg-orchid">2023 — 2024</span>
                     </div>
-                    <p class="text-xs sm:text-sm text-gray-600 font-light">Community engagement and rural communication framework development.</p>
+                    <p class="text-sm text-gray-700 font-light">Conducted local community engagement and rural communication framework development activities across targeted internship program locations.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== RECOGNITION SECTION ===== -->
-    <section id="recognition" class="bg-black text-white px-4 sm:px-6 md:px-16 lg:px-24 py-16 sm:py-20">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 sm:gap-16">
+    <!-- HONORS, PROJECTS & ACADEMIC RECOGNITION -->
+    <section id="recognition" class="px-6 py-20 md:px-16 lg:px-24" style="background-color: #9B8EC7;">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
             <div>
-                <span class="text-[10px] uppercase tracking-widest block mb-2 text-gray-400">[ HONORS ]</span>
-                <h2 class="text-3xl sm:text-4xl font-serif">Recognition</h2>
+                <span class="text-xs uppercase tracking-widest block mb-2 text-cream font-bold">[ BENCHMARK RECOGNITION ]</span>
+                <h2 class="text-4xl font-serif text-white">Honors & Frameworks</h2>
             </div>
-            <div class="lg:col-span-2 space-y-8 sm:space-y-10 text-xs sm:text-sm font-light">
-                <!-- Photography Honors -->
-                <div data-aos="fade-up">
-                    <h3 class="text-[10px] font-bold uppercase tracking-widest border-b border-white/20 pb-2 mb-3 sm:mb-4 text-gray-400">PHOTOGRAPHY RECOGNITION</h3>
-                    <ul class="space-y-1.5 sm:space-y-2">
-                        <li>• <span class="font-bold">Winner:</span> Panchtatva Eco-Club & IPCW-WWF Joint Network Initiatives</li>
-                        <li>• <span class="font-bold">3rd Prize:</span> On-the-spot Photography (Shruti, IPCW Fest 2025)</li>
+            <div class="lg:col-span-2 space-y-10 text-sm font-light text-white">
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest border-b border-white/40 pb-2 mb-4 text-cream">PHOTOGRAPHY RECOGNITION</h3>
+                    <ul class="space-y-2">
+                        <li>• <span class="font-bold">Winner:</span> Multiple Photography Contests (Panchtatva Eco-Club & IPCW-WWF Joint Network Initiatives)</li>
+                        <li>• <span class="font-bold">3rd Prize:</span> On-the-spot Photography Design Assembly (Shruti, IPCW Fest)</li>
                     </ul>
                 </div>
 
-                <!-- Masterclasses -->
-                <div data-aos="fade-up">
-                    <h3 class="text-[10px] font-bold uppercase tracking-widest border-b border-white/20 pb-2 mb-3 sm:mb-4 text-gray-400">CERTIFICATIONS & MASTERCLASSES</h3>
-                    <ul class="space-y-1.5 sm:space-y-2 text-gray-300">
-                        <li>• <span class="text-white font-medium">Documentary Filmmaking for Social Change</span> — Chris Schueler</li>
-                        <li>• <span class="text-white font-medium">Google AI Essentials Certification</span> — Digital workflows</li>
-                        <li>• <span class="text-white font-medium">Adobe Premiere Pro CC Masterclass</span> — Phil Ebiner</li>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest border-b border-white/40 pb-2 mb-4 text-cream">CERTIFICATIONS & MASTERCLASSES</h3>
+                    <ul class="space-y-2 text-gray-100">
+                        <li>• <span class="text-white font-medium">Documentary Filmmaking for Social Change</span> — Handled by industry specialist Chris Schueler</li>
+                        <li>• <span class="text-white font-medium">Google AI Essentials Certification</span> — Future digital workflows integration roadmap</li>
+                        <li>• <span class="text-white font-medium">Adobe Premiere Pro CC Masterclass Completion</span> — Phil Ebiner technical specialization track</li>
                     </ul>
                 </div>
 
-                <!-- Leadership -->
-                <div data-aos="fade-up">
-                    <h3 class="text-[10px] font-bold uppercase tracking-widest border-b border-white/20 pb-2 mb-3 sm:mb-4 text-gray-400">LEADERSHIP & VOLUNTEERING</h3>
-                    <ul class="space-y-1.5 sm:space-y-2">
-                        <li>• <span class="font-medium">Organizing Committee, LCA Film Festival</span> — Video production & documentation</li>
-                        <li>• <span class="font-medium">Volunteer, Pariprekshya International Film Festival</span> — Documentation & editing</li>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest border-b border-white/40 pb-2 mb-4 text-cream">LEADERSHIP & VOLUNTEERING OPERATIONS</h3>
+                    <ul class="space-y-2">
+                        <li>• <span class="font-medium">Organizing Committee, LCA Film Festival</span> — Handled video production assets & documentation layouts.</li>
+                        <li>• <span class="font-medium">Volunteer, Pariprekshya International Film Festival</span> — Managed documentation & editing pipelines.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="bg-white text-black border-t border-black px-4 sm:px-6 md:px-16 lg:px-24 py-12 sm:py-16">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 sm:gap-8">
+    <!-- FOOTER ZONE -->
+    <footer class="border-t border-dark px-6 py-16 md:px-16 lg:px-24" style="background-color: #F2EAE0;">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div>
-                <p class="text-xl sm:text-2xl font-serif tracking-tight font-bold">Akanksha Priya</p>
-                <p class="text-[10px] sm:text-xs text-gray-500 mt-1">DOB: 23/11/2005 | Delhi, India</p>
+                <p class="text-2xl font-serif tracking-tight font-bold text-dark">Akanksha Priya</p>
+                <p class="text-xs text-gray-600 mt-1">DOB: 23/11/2005 | Darbhanga, Bihar, India</p>
             </div>
-            <div class="flex flex-col gap-1 text-[10px] sm:text-xs font-medium tracking-wide">
-                <a href="mailto:aziel231105@gmail.com" class="hover:underline">aziel231105@gmail.com</a>
-                <a href="tel:+918540916141" class="hover:underline">+91 8540916141</a>
-                <div class="pt-2 flex gap-4 text-black font-bold text-[10px] sm:text-xs">
-                    <a href="https://www.linkedin.com/in/akanksha-priya-46048a3b3" target="_blank" class="underline">LinkedIn</a>
-                    <a href="https://github.com/akp2305" target="_blank" class="underline">GitHub</a>
+            <div class="flex flex-col gap-1 text-xs font-medium tracking-wide">
+                <a href="mailto:aziel231105@gmail.com" class="hover:underline text-dark">E-MAIL: aziel231105@gmail.com</a>
+                <a href="tel:+918540916141" class="hover:underline text-dark">PHONE: +91 8540916141</a>
+                <div class="pt-2 flex gap-4 text-lavender font-bold">
+                    <a href="https://www.linkedin.com/in/akanksha-priya-46048a3b3" target="_blank" class="underline">LinkedIn Profile</a>
+                    <a href="https://github.com/akp2305" target="_blank" class="underline">GitHub Layouts</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- ========================================== -->
-    <!-- ===== FIXED CV MODAL (RESPONSIVE) ===== -->
+    <!-- IMMERSIVE NON-BREAKING RESPONSIVE CV MODAL -->
     <!-- ========================================== -->
-    <div id="custom_cv_modal">
-        <div class="modal-content">
-            <!-- Header -->
-            <div class="modal-header">
-                <span class="text-[10px] sm:text-xs tracking-widest font-mono uppercase">CURRICULUM VITAE</span>
-                <button onclick="toggleCVModal(false)" class="modal-close-btn" aria-label="Close Modal">✕</button>
+    <div id="custom_cv_modal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-0 md:p-4">
+        
+        <!-- Modal Card: Full screen immersive space on mobile viewports -->
+        <div class="w-full h-full md:h-auto md:max-h-[88vh] md:max-w-3xl flex flex-col border-none md:border md:border-dark relative rounded-none shadow-2xl transition-all duration-300 overflow-hidden" style="background-color: #F2EAE0; color: #1A1A1A;">
+            
+            <!-- Sticky Header Controller Block -->
+            <div class="px-4 py-4 sm:px-6 flex justify-between items-center border-b border-dark shrink-0 text-white" style="background-color: #9B8EC7;">
+                <span class="text-[10px] sm:text-xs tracking-widest font-mono uppercase font-bold text-cream">CURRICULUM VITAE</span>
+                <button onclick="toggleCVModal(false)" class="text-white hover:text-cream text-xl font-mono px-2 transition-colors" aria-label="Close CV Interface">✕</button>
             </div>
             
-            <!-- Body -->
-            <div class="modal-body">
-                <div class="flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <!-- Main Scroll Container Body Area -->
+            <div class="p-5 sm:p-8 overflow-y-auto space-y-6 text-xs sm:text-sm flex-1 pb-24 md:pb-8">
+                
+                <!-- Contact Framework -->
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 pb-2">
                     <div>
-                        <h2 class="text-2xl sm:text-3xl font-serif uppercase tracking-tight font-bold">Akanksha Priya</h2>
-                        <p class="text-[10px] sm:text-xs font-mono text-gray-500 mt-1">DOB: 23/11/2005 | Delhi, India</p>
+                        <h2 class="text-2xl sm:text-3xl font-serif uppercase tracking-tight font-bold text-dark">Akanksha Priya</h2>
+                        <p class="text-[10px] sm:text-xs font-mono text-gray-600 mt-0.5">DOB: 23/11/2005 &bull; Creative Asset Portfolio</p>
                     </div>
-                    <div class="text-left sm:text-right text-[10px] sm:text-xs font-medium text-gray-700 space-y-0.5">
-                        <p>aziel231105@gmail.com</p>
+                    <div class="text-left sm:text-right text-[11px] sm:text-xs text-black font-mono space-y-0.5 pt-1 sm:pt-0 border-t sm:border-t-0 border-gray-300">
+                        <p class="break-all">aziel231105@gmail.com</p>
                         <p>+91 8540916141</p>
                     </div>
                 </div>
                 
-                <hr class="border-black">
-                
-                <!-- Education -->
-                <div class="mt-4 sm:mt-6">
-                    <h4 class="text-[10px] font-bold tracking-wider text-gray-400 uppercase mb-2 sm:mb-3">EDUCATIONAL QUALIFICATIONS</h4>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse text-[10px] sm:text-xs">
+                <hr class="border-dark">
+
+                <!-- Academic Block -->
+                <div>
+                    <h4 class="text-[10px] sm:text-xs font-bold tracking-wider text-lavender uppercase mb-3">[ ACADEMIC RECORD ]</h4>
+                    
+                    <!-- Desktop Layout View -->
+                    <div class="hidden md:block overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
                             <thead>
-                                <tr class="border-b border-black font-bold">
-                                    <th class="py-1.5 sm:py-2 pr-2">Course / Examination</th>
-                                    <th class="py-1.5 sm:py-2 px-2">Institution</th>
-                                    <th class="py-1.5 sm:py-2 px-2 text-center">Year</th>
-                                    <th class="py-1.5 sm:py-2 pl-2 text-right">Performance</th>
+                                <tr class="border-b border-dark font-bold text-dark">
+                                    <th class="py-2 pr-2">Course / Examination</th>
+                                    <th class="py-2 px-2">Institution / University</th>
+                                    <th class="py-2 px-2 text-center">Year</th>
+                                    <th class="py-2 pl-2 text-right">Performance</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-gray-200 font-light text-gray-900">
+                            <tbody class="divide-y divide-gray-300 font-light text-dark">
                                 <tr>
-                                    <td class="py-1.5 sm:py-2.5 pr-2 font-medium text-black">B.A. (Hons) Multimedia & Mass Comm</td>
-                                    <td class="py-1.5 sm:py-2.5 px-2">IPCW, University of Delhi</td>
-                                    <td class="py-1.5 sm:py-2.5 px-2 text-center">2026</td>
-                                    <td class="py-1.5 sm:py-2.5 pl-2 text-right font-bold">8.59 CGPA</td>
+                                    <td class="py-2.5 pr-2 font-medium">B.A. (Hons) Multimedia & Mass Comm</td>
+                                    <td class="py-2.5 px-2">Indraprastha College for Women (DU)</td>
+                                    <td class="py-2.5 px-2 text-center font-mono">2026</td>
+                                    <td class="py-2.5 pl-2 text-right font-bold font-mono text-lavender">8.59 CGPA</td>
                                 </tr>
                                 <tr>
-                                    <td class="py-1.5 sm:py-2.5 pr-2 font-medium text-black">CBSE (Science)</td>
-                                    <td class="py-1.5 sm:py-2.5 px-2">Mother Teresa Academy</td>
-                                    <td class="py-1.5 sm:py-2.5 px-2 text-center">2023</td>
-                                    <td class="py-1.5 sm:py-2.5 pl-2 text-right font-bold">75%</td>
+                                    <td class="py-2.5 pr-2 font-medium">CBSE (Science Matrix)</td>
+                                    <td class="py-2.5 px-2">Mother Teresa Academy (Darbhanga)</td>
+                                    <td class="py-2.5 px-2 text-center font-mono">2023</td>
+                                    <td class="py-2.5 pl-2 text-right font-bold font-mono text-dark">75%</td>
                                 </tr>
                                 <tr>
-                                    <td class="py-1.5 sm:py-2.5 pr-2 font-medium text-black">CBSE (Class 10)</td>
-                                    <td class="py-1.5 sm:py-2.5 px-2">DAV Public School</td>
-                                    <td class="py-1.5 sm:py-2.5 px-2 text-center">2021</td>
-                                    <td class="py-1.5 sm:py-2.5 pl-2 text-right font-bold">90%</td>
+                                    <td class="py-2.5 pr-2 font-medium">CBSE (Secondary Class 10th)</td>
+                                    <td class="py-2.5 px-2">DAV Public School (Darbhanga)</td>
+                                    <td class="py-2.5 px-2 text-center font-mono">2021</td>
+                                    <td class="py-2.5 pl-2 text-right font-bold font-mono text-dark">90%</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                </div>
-                
-                <hr class="border-gray-200 my-4 sm:my-6">
-                
-                <!-- Skills -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-[10px] sm:text-xs">
-                    <div>
-                        <h4 class="text-[10px] font-bold tracking-wider text-gray-400 uppercase mb-2">TECHNICAL SKILLS</h4>
-                        <p class="mb-1"><span class="font-bold">Production:</span> Videography, Cinematography, Field Documentation, Photo Coverage</p>
-                        <p><span class="font-bold">Software:</span> Photoshop, Canva, Premiere Pro, After Effects (Basic), Audition, Capcut</p>
+
+                    <!-- Mobile Fallback Card Stack Architecture -->
+                    <div class="block md:hidden space-y-3">
+                        <div class="p-3 border border-gray-300 bg-white/50">
+                            <p class="font-bold text-dark text-xs">B.A. (Hons) Multimedia & Mass Comm</p>
+                            <p class="text-gray-600 text-[11px] mt-0.5">Indraprastha College for Women (DU)</p>
+                            <div class="flex justify-between items-center mt-2 pt-1.5 border-t border-dashed border-gray-300 text-[11px] font-mono">
+                                <span>YEAR: 2026</span>
+                                <span class="bg-lavender text-white px-1.5 py-0.5 font-bold">8.59 CGPA</span>
+                            </div>
+                        </div>
+                        <div class="p-3 border border-gray-300 bg-white/50">
+                            <p class="font-bold text-dark text-xs">CBSE (Science Matrix)</p>
+                            <p class="text-gray-600 text-[11px] mt-0.5">Mother Teresa Academy (Darbhanga)</p>
+                            <div class="flex justify-between items-center mt-2 pt-1.5 border-t border-dashed border-gray-300 text-[11px] font-mono">
+                                <span>YEAR: 2023</span>
+                                <span class="bg-dark text-white px-1.5 py-0.5 font-bold">75%</span>
+                            </div>
+                        </div>
+                        <div class="p-3 border border-gray-300 bg-white/50">
+                            <p class="font-bold text-dark text-xs">CBSE (Secondary Class 10th)</p>
+                            <p class="text-gray-600 text-[11px] mt-0.5">DAV Public School (Darbhanga)</p>
+                            <div class="flex justify-between items-center mt-2 pt-1.5 border-t border-dashed border-gray-300 text-[11px] font-mono">
+                                <span>YEAR: 2021</span>
+                                <span class="bg-dark text-white px-1.5 py-0.5 font-bold">90%</span>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="text-[10px] font-bold tracking-wider text-gray-400 uppercase mb-2">ACADEMIC PROJECTS</h4>
-                        <p class="mb-1"><span class="font-bold">Film:</span> 'KHEL' (Director/Cinematographer)</p>
-                        <p><span class="font-bold">Campaign:</span> Stray Dog Welfare (Flyers, Awareness Kits)</p>
+                </div>
+
+                <hr class="border-gray-300">
+
+                <!-- Skills & Dynamic Action Blocks Matrix -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs sm:text-sm">
+                    <div class="space-y-2">
+                        <h4 class="text-[10px] sm:text-xs font-bold tracking-wider text-lavender uppercase mb-1">[ TECHNICAL SKILLS ]</h4>
+                        <p class="text-gray-800"><span class="font-bold text-dark">&bull; Production:</span> Videography, Cinematography, Field Documentation, Event Coverage, Photo Documentation</p>
+                        <p class="text-gray-800"><span class="font-bold text-dark">&bull; Software Stack:</span> Photoshop, Canva, Premiere Pro, After Effects (Basic), Audition, Audacity, Capcut</p>
+                        <p class="text-gray-800"><span class="font-bold text-dark">&bull; Languages:</span> English (Fluent), Hindi (Native)</p>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-[10px] sm:text-xs font-bold tracking-wider text-lavender uppercase mb-1">[ ACADEMIC UNDERTAKINGS ]</h4>
+                        <p class="text-gray-800"><span class="font-bold text-dark">&bull; Film & News:</span> Directed/Shot short film 'KHEL'. Handled complete news package videography layouts for Gauri Shankar Mandir.</p>
+                        <p class="text-gray-800"><span class="font-bold text-dark">&bull; Audio & Strategy:</span> Content Lead for Stray Dog Welfare Campaign graphics framework. Native speaker layout voice tracks for 'Itihas Express' podcasts.</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Footer -->
-            <div class="modal-footer">
-                <button onclick="toggleCVModal(false)" class="border border-black bg-black text-white px-4 sm:px-6 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
-                    Close
+            <!-- FIXED BOTTOM DISMISS PANEL -->
+            <div class="absolute bottom-0 left-0 w-full border-t border-gray-300 p-3 sm:p-4 bg-gray-100 flex justify-end shrink-0 z-10 md:relative">
+                <button onclick="toggleCVModal(false)" class="w-full md:w-auto text-center border border-dark bg-dark text-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+                    Close Interface
                 </button>
             </div>
         </div>
     </div>
 
     <!-- ========================================== -->
-    <!-- ===== LOOKBOOK LIGHTBOX ===== -->
+    <!-- GLOBAL LOOKBOOK LIGHTBOX OVERLAY ENGINE -->
     <!-- ========================================== -->
-    <div id="lookbook_modal">
-        <div class="lookbook-header">
-            <span class="lookbook-title text-white text-[10px] sm:text-xs font-mono tracking-widest uppercase bg-black/50 px-2 sm:px-3 py-1 border border-white/20">
-                📁 <span id="lookbook_title_display">NONE</span>
-            </span>
-            <button onclick="closeLookbook()" class="lookbook-close">✕ Close</button>
+    <div id="lookbook_modal" class="fixed inset-0 z-50 hidden bg-black overflow-y-auto overflow-x-hidden">
+        <div class="fixed top-0 left-0 w-full px-4 py-3 sm:px-6 sm:py-4 flex justify-between items-center bg-gradient-to-b from-black to-transparent z-50">
+            <div class="text-white text-[10px] sm:text-xs font-mono tracking-widest uppercase bg-black/50 px-3 py-1 border border-white/20 truncate max-w-[60%]">
+                DIR: <span id="lookbook_title_display" class="font-bold text-sage">NONE</span>
+            </div>
+            <button onclick="closeLookbook()" class="bg-cream text-dark border border-dark hover:bg-black hover:text-white px-4 py-1.5 sm:py-2 text-xs font-mono font-bold uppercase tracking-widest transition-all duration-300">
+                ✕ Close
+            </button>
         </div>
-        <div class="lookbook-image-wrapper" id="lookbook_stack_target"></div>
+        <div class="w-full max-w-4xl mx-auto py-20 sm:py-24 px-4 flex flex-col items-center justify-start space-y-6" id="lookbook_stack_target"></div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- ===== SCRIPTS ===== -->
-    <!-- ========================================== -->
+    <!-- SCRIPT INFRASTRUCTURE INJECTIONS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // ===== INIT AOS =====
-        AOS.init({
-            duration: 700,
-            once: false,
-            mirror: true,
-            offset: 80,
-            easing: 'ease-out-cubic'
-        });
+        AOS.init({ once: true, duration: 800 });
 
-        // ===== SCROLL PROGRESS =====
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('scrollProgress').style.width = scrolled + '%';
-        });
-
-        // ===== NAV STICKY EFFECT =====
-        const nav = document.getElementById('mainNav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // ===== MOBILE MENU =====
-        const mobileToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileClose = document.getElementById('mobileMenuClose');
-        
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                document.body.classList.toggle('overflow-hidden');
-            });
-        }
-        
-        if (mobileClose) {
-            mobileClose.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            });
-        }
-        
-        // Close mobile menu on link click
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            });
-        });
-
-        // ===== CV MODAL TOGGLE =====
         function toggleCVModal(show) {
             const cvModal = document.getElementById('custom_cv_modal');
             if (show) {
-                cvModal.classList.add('active');
+                cvModal.classList.remove('hidden');
                 document.body.classList.add('overflow-hidden');
             } else {
-                cvModal.classList.remove('active');
+                cvModal.classList.add('hidden');
                 document.body.classList.remove('overflow-hidden');
             }
         }
 
-        // ===== LOOKBOOK FUNCTIONS =====
         function openLookbook(folderName, totalPages) {
             const modal = document.getElementById('lookbook_modal');
             const targetContainer = document.getElementById('lookbook_stack_target');
@@ -914,80 +475,37 @@
             targetContainer.innerHTML = '';
             
             document.body.classList.add('overflow-hidden');
-            modal.classList.add('active');
-            
-            // Reset scroll position
-            modal.scrollTop = 0;
+            modal.classList.remove('hidden');
 
-            for (let i = 1; i <= totalPages; i++) {
+            for(let i = 1; i <= totalPages; i++) {
                 const pageNum = String(i).padStart(3, '0');
                 const imagePath = `assets/${folderName}/page_${pageNum}.webp`;
                 
                 const wrapper = document.createElement('div');
-                wrapper.className = "lookbook-image-item";
+                wrapper.className = "w-full bg-neutral-950 border border-white/10 p-2 shadow-2xl flex flex-col items-center";
                 
                 const img = document.createElement('img');
                 img.src = imagePath;
-                img.alt = `${folderName} - Page ${pageNum}`;
+                img.alt = `${folderName} layout view ${pageNum}`;
+                img.className = "w-full h-auto object-contain max-h-[90vh] bg-neutral-900 select-none pointer-events-none";
                 img.loading = "lazy";
-                img.draggable = false;
                 
-                const label = document.createElement('span');
-                label.className = "lookbook-image-label";
-                label.innerText = `PAGE ${pageNum} // ${folderName}`;
+                const tag = document.createElement('span');
+                tag.className = "text-[9px] sm:text-[10px] text-gray-500 font-mono self-start mt-2 block pl-1 tracking-widest";
+                tag.innerText = `LAYOUT VIEWPORT INDEX // PAGE_${pageNum}.WEBP`;
                 
                 wrapper.appendChild(img);
-                wrapper.appendChild(label);
+                wrapper.appendChild(tag);
                 targetContainer.appendChild(wrapper);
             }
+            modal.scrollTop = 0;
         }
 
         function closeLookbook() {
             const modal = document.getElementById('lookbook_modal');
-            modal.classList.remove('active');
+            modal.classList.add('hidden');
             document.body.classList.remove('overflow-hidden');
         }
-
-        // ===== CLOSE MODALS ON ESC KEY =====
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const cvModal = document.getElementById('custom_cv_modal');
-                if (cvModal.classList.contains('active')) {
-                    toggleCVModal(false);
-                }
-                
-                const lookbookModal = document.getElementById('lookbook_modal');
-                if (lookbookModal.classList.contains('active')) {
-                    closeLookbook();
-                }
-            }
-        });
-
-        // ===== CLOSE CV MODAL ON OVERLAY CLICK =====
-        document.getElementById('custom_cv_modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                toggleCVModal(false);
-            }
-        });
-
-        // ===== SMOOTH SCROLL FOR NAV LINKS =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const navHeight = document.getElementById('mainNav').offsetHeight;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        console.log('✨ Akanksha Priya Portfolio — Loaded Successfully');
-        console.log('📁 Asset Directories: Card Design, Guide Book, Newsletter, Posters, Shiv_Naresh_Case_Study, Yonex_PR_Crisis_Case_Study');
     </script>
 </body>
 </html>
