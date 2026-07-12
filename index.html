@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akanksha Priya — Graphic Design & Visual Communication</title>
+    <!-- Tailwind CSS & DaisyUI CDNs -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet">
+    <!-- Google Fonts: Instrument Serif & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+        .font-serif {
+            font-family: 'Instrument Serif', serif;
+        }
+        /* Custom Scrollbar for sleek aesthetic */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #000000;
+        }
+        .border-thin {
+            border-width: 1px;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden selection:bg-black selection:text-white">
+
+    <!-- NAVIGATION ARCHITECTURE -->
+    <nav class="sticky top-0 z-40 w-full bg-white bg-opacity-90 backdrop-blur-md border-b border-black px-6 py-4 flex justify-between items-center transition-all duration-300">
+        <a href="#" class="text-xl font-bold tracking-tight uppercase">A. PRIYA</a>
+        <div class="flex items-center space-x-8 text-sm font-medium tracking-wide">
+            <a href="#about" class="hover:underline underline-offset-4">ABOUT</a>
+            <a href="#work" class="hover:underline underline-offset-4">WORK</a>
+            <a href="#experience" class="hover:underline underline-offset-4">LOGS</a>
+            <a href="#recognition" class="hover:underline underline-offset-4">IMPACT</a>
+            <button onclick="cv_modal.showModal()" class="border border-black px-4 py-1.5 hover:bg-black hover:text-white transition-all duration-300">CV</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="about" class="min-h-screen flex flex-col justify-between px-6 py-12 md:px-16 md:py-20 lg:px-24">
+        <div class="pt-12 max-w-5xl" data-aos="fade-up" data-aos-duration="1000">
+            <span class="text-xs uppercase tracking-widest block mb-4 font-semibold">[ GRAPHIC DESIGN & VISUAL COMMUNICATION ]</span>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif font-light leading-none tracking-tight mb-8">
+                I specialize in <i>visual design</i>, producing narratives that bridge the gap between <i>concept & craft</i>.
+            </h1>
+            <p class="text-lg md:text-xl font-light max-w-3xl leading-relaxed mt-6">
+                As a final-year graduate, my work is rooted in research-led design—translating complex briefs, organizational causes, and raw academic data into clear, considered visuals across print, digital, and editorial formats.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 border-t border-black mt-12 w-full text-xs tracking-wider" data-aos="fade-up" data-aos-delay="200">
+            <div>
+                <span class="text-gray-500 block mb-1">PRIMARY TOOLBOX</span>
+                <span class="font-medium uppercase">Photoshop / Illustrator / Canva</span>
+            </div>
+            <div>
+                <span class="text-gray-500 block mb-1">DESIGN MEDIUMS</span>
+                <span class="font-medium uppercase">Editorial / Campaigns / Layouts</span>
+            </div>
+            <div>
+                <span class="text-gray-500 block mb-1">CORE METHODOLOGY</span>
+                <span class="font-medium uppercase">Brief-to-Final Production Workflow</span>
+            </div>
+            <div>
+                <span class="text-gray-500 block mb-1">METADATA SYNC</span>
+                <span class="font-medium uppercase">DOB: 23/11/2005 / CGPA: 8.59</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK ARCHITECTURE SECTION -->
+    <section id="work" class="bg-black text-white px-6 py-20 md:px-16 lg:px-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end border-b border-white pb-6 mb-16">
+                <div>
+                    <span class="text-xs uppercase tracking-widest block mb-2 text-gray-400">[ PRE-COMPUTED DIGITAL LOOKBOOKS ]</span>
+                    <h2 class="text-5xl md:text-6xl font-serif">Selected Creative Case Studies</h2>
+                </div>
+                <span class="hidden md:inline text-xs tracking-widest text-gray-400">[ CLICK CARDS TO EXPLORE FULL LAYOUTS ]</span>
+            </div>
+
+            <!-- PRIMARY IN-DEPTH CASE STUDIES (2 MAIN PROJECTS) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+                <!-- Case Study 1 -->
+                <div class="group cursor-pointer border border-white p-6 hover:bg-white hover:text-black transition-all duration-500 flex flex-col justify-between" 
+                     onclick="openLookbook('Shiv_Naresh_Case_Study', 10)" data-aos="fade-right">
+                    <div>
+                        <div class="w-full aspect-[4/3] bg-neutral-900 border border-white/20 mb-6 overflow-hidden relative">
+                            <img src="assets/Shiv_Naresh_Case_Study/page_001.webp" alt="Shiv Naresh Brand Repositioning" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                        </div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-3xl font-serif tracking-tight">Shiv Naresh Brand Repositioning</h3>
+                            <span class="text-xs tracking-wider border border-white group-hover:border-black px-2 py-0.5 mt-2">10 PAGES</span>
+                        </div>
+                        <p class="text-sm font-light leading-relaxed text-gray-400 group-hover:text-black mb-6">
+                            SWOT-led extensive corporate brand research and a thoroughly refreshed visual identity layout framework for a legacy sports brand's modern market repositioning strategy.
+                        </p>
+                    </div>
+                    <span class="text-xs font-bold tracking-widest group-hover:underline mt-auto">[ ACTIVATE LOOKBOOK ENGINE → ]</span>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="group cursor-pointer border border-white p-6 hover:bg-white hover:text-black transition-all duration-500 flex flex-col justify-between" 
+                     onclick="openLookbook('Yonex_PR_Crisis_Case_Study', 8)" data-aos="fade-left">
+                    <div>
+                        <div class="w-full aspect-[4/3] bg-neutral-900 border border-white/20 mb-6 overflow-hidden relative">
+                            <img src="assets/Yonex_PR_Crisis_Case_Study/page_001.webp" alt="Yonex PR Crisis Presentation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                        </div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-3xl font-serif tracking-tight">Yonex Sunrise India Open PR Case Study</h3>
+                            <span class="text-xs tracking-wider border border-white group-hover:border-black px-2 py-0.5 mt-2">8 PAGES</span>
+                        </div>
+                        <p class="text-sm font-light leading-relaxed text-gray-400 group-hover:text-black mb-6">
+                            An academic crisis communications study completely rebuilt into a visually striking, portfolio-grade high-end layout presentation for an international sports tournament venue.
+                        </p>
+                    </div>
+                    <span class="text-xs font-bold tracking-widest group-hover:underline mt-auto">[ ACTIVATE LOOKBOOK ENGINE → ]</span>
+                </div>
+            </div>
+
+            <!-- SELECTED CORE WORK GRID (4 CORE PROJECTS) -->
+            <div class="border-t border-white/20 pt-12">
+                <h3 class="text-xs uppercase tracking-widest text-gray-400 mb-8">[ EDITORIAL LAYOUTS & DESIGN SYSTEMS ]</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Core Project 1 -->
+                    <div class="border border-white/30 p-4 hover:border-white transition-all cursor-pointer group flex flex-col justify-between" onclick="openLookbook('Guide Book', 16)">
+                        <div>
+                            <div class="aspect-square bg-neutral-950 mb-4 overflow-hidden border border-white/10">
+                                <img src="assets/Guide Book/page_001.webp" alt="NDNS Guidebook" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <span class="text-xs tracking-wider text-gray-400 block mb-1">16 PAGES • PRINT EDITORIAL</span>
+                            <h4 class="text-xl font-serif mb-2">NDNS Guidebook Project</h4>
+                            <p class="text-xs font-light text-gray-400 leading-relaxed mb-4">Environmental structural manual converting extensive raw field data collections into publication-ready art print.</p>
+                        </div>
+                        <span class="text-xs group-hover:underline font-medium mt-auto">[ EXPLORE PAGES (16) ]</span>
+                    </div>
+
+                    <!-- Core Project 2 -->
+                    <div class="border border-white/30 p-4 hover:border-white transition-all cursor-pointer group flex flex-col justify-between" onclick="openLookbook('Newsletter', 27)">
+                        <div>
+                            <div class="aspect-square bg-neutral-950 mb-4 overflow-hidden border border-white/10">
+                                <img src="assets/Newsletter/page_001.webp" alt="NDNS Newsletter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <span class="text-xs tracking-wider text-gray-400 block mb-1">27 PAGES • LAYOUT SYSTEM</span>
+                            <h4 class="text-xl font-serif mb-2">NDNS Recurring Newsletter</h4>
+                            <p class="text-xs font-light text-gray-400 leading-relaxed mb-4">A recurring multi-page serial design layout meticulously systematized for the New Delhi Nature Society.</p>
+                        </div>
+                        <span class="text-xs group-hover:underline font-medium mt-auto">[ EXPLORE PAGES (27) ]</span>
+                    </div>
+
+                    <!-- Core Project 3 -->
+                    <div class="border border-white/30 p-4 hover:border-white transition-all cursor-pointer group flex flex-col justify-between" onclick="openLookbook('Card Design', 3)">
+                        <div>
+                            <div class="aspect-square bg-neutral-950 mb-4 overflow-hidden border border-white/10">
+                                <img src="assets/Card Design/page_001.webp" alt="Budding Medicoz Deck" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <span class="text-xs tracking-wider text-gray-400 block mb-1">3 PAGES • DATA VISUALIZATION</span>
+                            <h4 class="text-xl font-serif mb-2">Budding Medicoz & Mariner Decks</h4>
+                            <p class="text-xs font-light text-gray-400 leading-relaxed mb-4">Transforming high-density scientific medical text assets into functional, clean visual layouts prioritizing content readability.</p>
+                        </div>
+                        <span class="text-xs group-hover:underline font-medium mt-auto">[ EXPLORE PAGES (3) ]</span>
+                    </div>
+
+                    <!-- Core Project 4 -->
+                    <div class="border border-white/30 p-4 hover:border-white transition-all cursor-pointer group flex flex-col justify-between" onclick="openLookbook('Posters', 2)">
+                        <div>
+                            <div class="aspect-square bg-neutral-950 mb-4 overflow-hidden border border-white/10">
+                                <img src="assets/Posters/page_001.webp" alt="Stray Dog Welfare & Poster Campaigns" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <span class="text-xs tracking-wider text-gray-400 block mb-1">2 PAGES • CAMPAIGN PSA</span>
+                            <h4 class="text-xl font-serif mb-2">Stray Dog Welfare & Posters</h4>
+                            <p class="text-xs font-light text-gray-400 leading-relaxed mb-4">Development communication layout framework including graphic awareness toolkits and civic response survey assets.</p>
+                        </div>
+                        <span class="text-xs group-hover:underline font-medium mt-auto">[ EXPLORE PAGES (2) ]</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL TIMELINE LOGS -->
+    <section id="experience" class="px-6 py-20 md:px-16 lg:px-24 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div>
+                <span class="text-xs uppercase tracking-widest block mb-2 text-gray-500">[ TRACKING INDUSTRY INSIGHTS ]</span>
+                <h2 class="text-5xl font-serif tracking-tight">Professional Design Logs</h2>
+                <p class="text-sm text-gray-600 mt-4 leading-relaxed max-w-xs">
+                    Synthesizing real-world media strategy, corporate communications infrastructure, and systemic asset scaling workflows.
+                </p>
+            </div>
+            <div class="lg:col-span-2 space-y-12">
+                
+                <!-- Log Entry 1 -->
+                <div class="border-b border-black pb-8" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <h3 class="text-2xl font-bold tracking-tight">Budding Medicoz & Mariner</h3>
+                        <span class="text-xs bg-black text-white font-mono px-3 py-1 mt-2 md:mt-0">JULY — NOV 2025</span>
+                    </div>
+                    <span class="text-sm font-medium block text-gray-700 mb-2">Presentation Design Intern</span>
+                    <p class="text-sm text-gray-600 leading-relaxed font-light">
+                        Architected complex structural graphic updates to translate highly sophisticated raw medical and maritime educational syllabi text blocks into beautiful vector learning resources.
+                    </p>
+                </div>
+
+                <!-- Log Entry 2 -->
+                <div class="border-b border-black pb-8" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <h3 class="text-2xl font-bold tracking-tight">New Delhi Nature Society</h3>
+                        <span class="text-xs bg-black text-white font-mono px-3 py-1 mt-2 md:mt-0">JUNE — JULY 2025</span>
+                    </div>
+                    <span class="text-sm font-medium block text-gray-700 mb-2">Media & Documentation Layout Intern</span>
+                    <p class="text-sm text-gray-600 leading-relaxed font-light">
+                        Pioneered long-form layout visual narratives for public ecological preservation initiatives. Drafted layouts for environmental guidebooks and organized public documentation workflows.
+                    </p>
+                </div>
+
+                <!-- Log Entry 3 -->
+                <div class="border-b border-black pb-8" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <h3 class="text-2xl font-bold tracking-tight">A.P. Khanna Textiles</h3>
+                        <span class="text-xs bg-black text-white font-mono px-3 py-1 mt-2 md:mt-0">JULY 2025</span>
+                    </div>
+                    <span class="text-sm font-medium block text-gray-700 mb-2">Media & Visual Content Intern</span>
+                    <p class="text-sm text-gray-600 leading-relaxed font-light">
+                        Refined corporate digital brand strategy guidelines. Structured cohesive layouts to define the brand’s industrial footprint and premium public communications alignment.
+                    </p>
+                </div>
+
+                <!-- Log Entry 4 -->
+                <div class="border-b border-black pb-8" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <h3 class="text-2xl font-bold tracking-tight">Samarth Bharat Project</h3>
+                        <span class="text-xs bg-black text-white font-mono px-3 py-1 mt-2 md:mt-0">FEB — MARCH 2024</span>
+                    </div>
+                    <span class="text-sm font-medium block text-gray-700 mb-2">Field Photography Contributor</span>
+                    <p class="text-sm text-gray-600 leading-relaxed font-light">
+                        Executed direct factual photographic documentation across targeted local development operation infrastructure zones. Generated key analytical visual assets utilized as empirical evidence vectors inside official corporate annual corporate governance publications.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACT & RECOGNITION ARCHITECTURE -->
+    <section id="recognition" class="bg-black text-white px-6 py-20 md:px-16 lg:px-24">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
+            <div>
+                <span class="text-xs uppercase tracking-widest block mb-2 text-gray-400">[ BEYOND THE LAYOUT GRID ]</span>
+                <h2 class="text-5xl font-serif">Impact & Recognition</h2>
+                <p class="text-xs text-gray-400 mt-4 leading-relaxed font-light">
+                    Where rigorous research, structural management metrics, and award-winning visual framing intersect.
+                </p>
+            </div>
+            
+            <div class="lg:col-span-2 space-y-12">
+                <!-- Photography Honors -->
+                <div>
+                    <h3 class="text-xs uppercase tracking-widest border-b border-white/20 pb-2 mb-6 text-gray-400">PHOTOGRAPHY CRITERIA • TRIPLE CROWN RECOGNITION</h3>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li class="flex items-start"><span class="font-mono text-xs mr-4">[01]</span> <span>Winner — Panchtatva Eco-Club Photographic Assembly (Zakir Husain College)</span></li>
+                        <li class="flex items-start"><span class="font-mono text-xs mr-4">[02]</span> <span>Winner — Campus Biodiversity Visual Contest (IPCW x WWF Network)</span></li>
+                        <li class="flex items-start"><span class="font-mono text-xs mr-4">[03]</span> <span>3rd Prize Laureate — On-The-Spot Visual Composition (Shruti Fest 2025)</span></li>
+                    </ul>
+                </div>
+
+                <!-- Leadership Configuration -->
+                <div>
+                    <h3 class="text-xs uppercase tracking-widest border-b border-white/20 pb-2 mb-6 text-gray-400">LEADERSHIP & CULTURAL OPERATION SYSTEMS</h3>
+                    <p class="text-sm font-light leading-relaxed text-gray-300">
+                        Organizing Committee executive operative agent for <span class="text-white font-medium">Lights Camera Action (LCA)</span> & active operations management coordinator for the prestigious <span class="text-white font-medium">Pariprekshya International Film Festival</span>. Directed and structured systemic BTS technical field layouts and elite foreign guest press production schedules.
+                    </p>
+                </div>
+
+                <!-- Credentials Masterclasses -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest border-b border-white/20 pb-2 mb-4 text-gray-400">VERIFIED MASTERCLASS VALUES</h4>
+                        <p class="text-sm font-light text-gray-300">
+                            Completed professional programmatic track: <span class="text-white italic font-serif">Documentary Filmmaking for Social Change</span> managed directly by industry pioneer Chris Schueler. Focused heavily on high-impact visual storytelling frameworks.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest border-b border-white/20 pb-2 mb-4 text-gray-400">CREATIVE INSTINCT RADARS</h4>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="border border-white/30 px-2 py-1">WILDLIFE DOCUMENTATION</span>
+                            <span class="border border-white/30 px-2 py-1">FOLK NARRATIVE ARCHIVING</span>
+                            <span class="border border-white/30 px-2 py-1">CULTURAL ARCHITECTURES</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE ARSENAL & SKILLS SECTION -->
+    <section class="px-6 py-20 md:px-16 lg:px-24 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 border-t border-black pt-16">
+            <div>
+                <span class="text-xs uppercase tracking-widest block mb-2 text-gray-500">[ EMPIRICAL COMPETENCIES ]</span>
+                <h2 class="text-4xl font-serif">The Technical Arsenal</h2>
+            </div>
+            <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Skill Bars -->
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs tracking-wider font-medium mb-1">
+                            <span>CANVA SYSTEMS (EXPERT LAYOUTS)</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 h-1"><div class="bg-black h-1 w-[90%]"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs tracking-wider font-medium mb-1">
+                            <span>ADOBE PHOTOSHOP COMPOSITION</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 h-1"><div class="bg-black h-1 w-[85%]"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs tracking-wider font-medium mb-1">
+                            <span>PREMIERE PRO & AFTER EFFECTS ENGINE</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 h-1"><div class="bg-black h-1 w-[60%]"></div></div>
+                    </div>
+                </div>
+                <!-- Competency Chips -->
+                <div>
+                    <span class="text-xs text-gray-500 uppercase block mb-3 font-medium">[ COMMITTED VECTOR MATRIX ]</span>
+                    <div class="flex flex-wrap gap-2 text-xs uppercase font-medium">
+                        <span class="bg-black text-white px-3 py-1.5">Graphic Design</span>
+                        <span class="bg-black text-white px-3 py-1.5">Presentation Systems</span>
+                        <span class="bg-black text-white px-3 py-1.5">Layout & Fine Typography</span>
+                        <span class="bg-black text-white px-3 py-1.5">Visual Archival Storytelling</span>
+                        <span class="bg-black text-white px-3 py-1.5">Campaign Architecture</span>
+                    </div>
+                    <div class="mt-6 text-xs">
+                        <span class="text-gray-500 block mb-1">LINGUISTIC SYSTEMS</span>
+                        <span class="font-bold">ENGLISH & HINDI — BILINGUAL PROFICIENCY PROFILE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM MONOCHROME FOOTER METRICS -->
+    <footer class="bg-black text-white border-t border-white/20 px-6 py-16 md:px-16 lg:px-24">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
+            <div>
+                <p class="text-2xl font-serif mb-2">Akanksha Priya</p>
+                <p class="text-xs text-gray-400 font-light tracking-wide">UX/UI Refactored Graphic Design Hub &bull; Year 2026 Build</p>
+                <p class="text-xs text-gray-500 font-mono mt-1">DOB: 23/11/2005 | Darbhanga, Bihar</p>
+            </div>
+            <div class="flex flex-col space-y-2 text-xs tracking-wider">
+                <a href="mailto:aziel231105@gmail.com" class="hover:underline">E-MAIL: aziel231105@gmail.com</a>
+                <a href="tel:+918540916141" class="hover:underline">TEL: +91 8540916141</a>
+                <div class="pt-2 flex space-x-4 font-bold text-gray-300">
+                    <a href="https://linkedin.com/in/akanksha-priya-46048a3b3" target="_blank" class="hover:text-white underline">LINKEDIN Profile</a>
+                    <a href="https://github.com/akp2305" target="_blank" class="hover:text-white underline">GITHUB (akp2305)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE COMPONENT A: ACADEMIC CV MODAL DIALOG -->
+    <dialog id="cv_modal" class="modal bg-black/80 backdrop-blur-sm">
+        <form method="dialog" class="modal-box bg-white text-black rounded-none max-w-2xl p-0 border border-black overflow-hidden">
+            <div class="bg-black text-white px-6 py-4 flex justify-between items-center">
+                <h3 class="text-lg font-bold uppercase tracking-widest font-mono text-xs">CURRICULUM VITAE CONFIGURATION</h3>
+                <button class="btn btn-sm btn-circle btn-ghost text-white font-mono">✕</button>
+            </div>
+            
+            <div class="p-8 space-y-6 max-h-[75vh] overflow-y-auto">
+                <div>
+                    <h2 class="text-3xl font-serif">Akanksha Priya</h2>
+                    <p class="text-xs font-mono text-gray-500 mt-1">aziel231105@gmail.com | +91 8540916141</p>
+                </div>
+                
+                <hr class="border-black">
+                
+                <!-- Academic Credentials Core Blocks -->
+                <div>
+                    <h4 class="text-xs font-bold tracking-wider text-gray-400 uppercase mb-3">[ RIGOROUS ACADEMIC CREDENTIALS ]</h4>
+                    <div class="space-y-4 text-sm">
+                        <div class="border-l-2 border-black pl-3">
+                            <div class="flex justify-between font-bold">
+                                <span>B.A. (Hons) Multimedia & Mass Communication</span>
+                                <span class="text-xs font-mono bg-black text-white px-1">2023 — PRESENT</span>
+                            </div>
+                            <p class="text-xs text-gray-700">Indraprastha College for Women, University of Delhi</p>
+                            <p class="text-xs font-bold mt-1 text-black">Current CGPA Metric: 8.59</p>
+                        </div>
+                        <div class="border-l-2 border-black pl-3">
+                            <div class="flex justify-between font-bold">
+                                <span>CBSE Higher Secondary Science Matrix (Class XII)</span>
+                                <span class="text-xs font-mono bg-neutral-200 px-1">COMPLETED 2023</span>
+                            </div>
+                            <p class="text-xs text-gray-700">Mother Teresa Academy, Darbhanga</p>
+                            <p class="text-xs font-bold mt-1 text-black">Academic Score: 75%</p>
+                        </div>
+                        <div class="border-l-2 border-black pl-3">
+                            <div class="flex justify-between font-bold">
+                                <span>CBSE Secondary Core Layout (Class X)</span>
+                                <span class="text-xs font-mono bg-neutral-200 px-1">COMPLETED 2021</span>
+                            </div>
+                            <p class="text-xs text-gray-700">DAV Public School, Darbhanga</p>
+                            <p class="text-xs font-bold mt-1 text-black">Academic Score: 90%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-neutral-200">
+
+                <!-- Capabilities -->
+                <div>
+                    <h4 class="text-xs font-bold tracking-wider text-gray-400 uppercase mb-2">[ CORE STRUCTURAL COMPETENCIES ]</h4>
+                    <p class="text-xs leading-relaxed text-gray-700">
+                        Expert validation architectures in Multimedia Production, Stark Minimalist Graphic Design Schemes, Complex Layout Custom Typography, Editorial System Scaling, Vector Data Visualizations, and Advanced Brand Communication Protocols.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-neutral-200 p-4 bg-neutral-50 flex justify-end">
+                <button type="submit" class="border border-black px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300">
+                    Dismiss Terminal Interface
+                </button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- INTERACTIVE COMPONENT B: GLOBAL LOOKBOOK LIGHTBOX OVERLAY ENGINE -->
+    <div id="lookbook_modal" class="fixed inset-0 z-50 hidden bg-black overflow-y-auto overflow-x-hidden transition-all duration-300">
+        <!-- Persistent UI Fixed HUD Layer Controls -->
+        <div class="fixed top-0 left-0 w-full px-6 py-4 flex justify-between items-center bg-gradient-to-b from-black via-black/80 to-transparent z-50 pointer-events-none">
+            <div class="text-white text-xs font-mono tracking-widest uppercase bg-black/40 px-3 py-1 backdrop-blur-md border border-white/15">
+                PROJECT METADATA ASSET ROUTE: <span id="lookbook_title_display" class="font-bold underline text-white">NONE</span>
+            </div>
+            <button onclick="closeLookbook()" class="pointer-events-auto bg-white text-black border border-white hover:bg-black hover:text-white px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest transition-all duration-300">
+                ✕ Close Engine
+            </button>
+        </div>
+
+        <!-- Seamless Vertical Centered Column Stack Viewport Target Container -->
+        <div class="w-full max-w-4xl mx-auto py-24 px-4 flex flex-col items-center justify-start space-y-6" id="lookbook_stack_target">
+            <!-- Dynamic Image DOM elements generated instantly here via JSON manifest execution -->
+        </div>
+    </div>
+
+    <!-- CORE SCRIPTS ENGINE INJECTION -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Init Animation Framework
+        AOS.init({
+            once: true,
+            duration: 800
+        });
+
+        /**
+         * Dynamic Lookbook Script System
+         * Maps directory names and counts perfectly to display project columns on click.
+         */
+        function openLookbook(folderName, totalPages) {
+            const modal = document.getElementById('lookbook_modal');
+            const targetContainer = document.getElementById('lookbook_stack_target');
+            const displayTitle = document.getElementById('lookbook_title_display');
+            
+            // Set running head context title
+            displayTitle.innerText = `assets/${folderName.replace(/_/g, ' ')}/`;
+            
+            // Clean up old images safely
+            targetContainer.innerHTML = '';
+            
+            // Prevent main window tracking scroll leakage
+            document.body.classList.add('overflow-hidden');
+            modal.classList.remove('hidden');
+
+            // Generate structural element pipeline
+            for(let i = 1; i <= totalPages; i++) {
+                // Pad integers out uniformly to match file serialization patterns (e.g., page_001.webp)
+                const pageNum = String(i).padStart(3, '0');
+                const imagePath = `assets/${folderName}/page_${pageNum}.webp`;
+                
+                // Construct clean premium wrapper configuration cards
+                const wrapper = document.createElement('div');
+                wrapper.className = "w-full bg-neutral-950 border border-white/10 relative p-2 shadow-2xl flex flex-col items-center";
+                
+                const img = document.createElement('img');
+                img.src = imagePath;
+                img.alt = `${folderName} Page Layout Render - Asset ${pageNum}`;
+                img.className = "w-full h-auto object-contain max-h-[90vh] bg-neutral-900 select-none pointer-events-none";
+                img.loading = "lazy"; // Conserve active browser computational overhead bandwidth
+                
+                // Discrete numeric design layout tags
+                const tag = document.createElement('span');
+                tag.className = "text-[10px] text-gray-500 font-mono self-start mt-2 block pl-1 tracking-widest uppercase";
+                tag.innerText = `LAYOUT SPREAD VIEWPORT INDEX // SHEET_${pageNum}.BIN`;
+                
+                wrapper.appendChild(img);
+                wrapper.appendChild(tag);
+                targetContainer.appendChild(wrapper);
+            }
+            
+            // Smoothly auto reset scrolling coordinates inside container back to origin threshold apex
+            modal.scrollTop = 0;
+        }
+
+        function closeLookbook() {
+            const modal = document.getElementById('lookbook_modal');
+            modal.classList.add('hidden');
+            // Restore window native tracking scrolling defaults
+            document.body.classList.remove('overflow-hidden');
+        }
+    </script>
+</body>
+</html>
